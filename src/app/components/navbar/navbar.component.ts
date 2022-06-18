@@ -12,11 +12,13 @@ export class NavbarComponent implements OnInit {
 
   authenticated: boolean = false;
 
-  constructor(private authService: AuthService, private route: Router, private snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.authService.isAuthenticated().subscribe((data) => {
-      this.authenticated = data;
+    this.router.events.subscribe(() => {
+      this.authService.isAuthenticated().subscribe((data) => {
+        this.authenticated = data;
+      })
     })
   }
 
@@ -24,6 +26,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logOut().subscribe({
       next: () => {
         this.snackBar.open('Has cerrado sesión Pablito', '', {duration: 2000});
+        this.router.navigateByUrl('/login');
       },
       error: () => {
         this.snackBar.open('No se ha podido cerrar sesión lol', '', {duration: 2000});
