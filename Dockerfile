@@ -6,5 +6,6 @@ RUN npm install
 COPY . /app
 RUN npm run build --prod
 
-FROM nginx:stable-alpine
+FROM nginx:latest
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /app/dist/ramboot /usr/share/nginx/html
