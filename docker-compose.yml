@@ -2,4 +2,4 @@ services:
   ramboot:
     build: .
     ports:
-      - "8000:80"
+      - "10001:80"
