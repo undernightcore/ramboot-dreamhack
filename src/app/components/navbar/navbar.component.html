@@ -1,0 +1,8 @@
+<mat-toolbar class="navbar" color="primary">
+  <div>Ramboot</div>
+  <div *ngIf="authenticated">
+    <button (click)="logOut()" mat-icon-button>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

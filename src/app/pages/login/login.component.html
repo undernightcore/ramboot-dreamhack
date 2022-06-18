@@ -1,0 +1,18 @@
+<div class="login">
+  <img class="login__logo" src="assets/images/logo.png">
+  <form (ngSubmit)="logIn()" class="login__form">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput name="email" type="email" placeholder="info@ramboot.es" [(ngModel)]="email" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput name="password" type="password" placeholder="contraseña" [(ngModel)]="password" required>
+      </mat-form-field>
+    </div>
+    <button type="submit" mat-raised-button color="primary">Acceder</button>
+  </form>
+</div>
