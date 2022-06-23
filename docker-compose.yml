@@ -1,5 +1,0 @@
-services:
-  ramboot:
-    build: .
-    ports:
-      - "10001:80"
