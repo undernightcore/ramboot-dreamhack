@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {Entry} from "../../interfaces/entry";
+import {EntryService} from "../../services/entry.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,37 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
 
-  constructor() {}
+  entry: Entry = {
+    nombre: '',
+    apellidos: '',
+    email: '',
+    telefono: '',
+    comprado: false,
+    jugado: false
+  }
+
+  constructor(private entryService: EntryService, private snackBar: MatSnackBar) {}
+
+  create() {
+    this.entryService.create(this.entry).subscribe({
+      next: (data) => {
+        this.snackBar.open('Has añadido el usuario correctamente', '', {duration: 2000});
+        this.empty();
+      },
+      error: (data) => {
+        this.snackBar.open('Ya existe un usuario con este correo', '', {duration: 2000});
+      }
+    });
+  }
+
+  empty() {
+    this.entry = {
+      nombre: '',
+      apellidos: '',
+      email: '',
+      telefono: '',
+      comprado: false,
+      jugado: false
+    }
+  }
 }

@@ -1,0 +1,38 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  &__logo {
+    height: 200px;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 450px;
+  }
+
+  &__submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 180px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 250px;
+    margin-bottom: 20px;
+  }
+}
